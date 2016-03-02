@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:http="http://www.mulesoft.org/schema/mule/http"
+    xmlns="http://www.mulesoft.org/schema/mule/core"
+    xmlns:spring="http://www.springframework.org/schema/beans"
+    xmlns:jetty="http://www.mulesoft.org/schema/mule/jetty"
+    xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core    http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http    http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+        http://www.mulesoft.org/schema/mule/jetty   http://www.mulesoft.org/schema/mule/jetty/current/mule-jetty.xsd
+">
+
+	<!--
+	<flow name="patch-mule-transport-http-test-headers">
+        <http:inbound-endpoint
+            address="http://localhost:8081/test/headers"
+            exchange-pattern="request-response">
+        </http:inbound-endpoint>
+        
+        <custom-transformer class="se.skltp.patch.mule.transport.http.headers.AddHeadersTransformer"/>
+    </flow>
+    -->
+    <!--
+    can not use transports that use MuleMessage for serverside in client
+    header testing since MuleMessage has handling for case and only leaves
+    the last header for the scenario below:
+      message.setOutboundProperty("x-test-case-insensitive-header", "lowercase");
+      message.setOutboundProperty("X-Test-Case-Insensitive-Header", "CamelCase");
+	-->
+<!--
+	<flow name="patch-mule-transport-http-test-headers">
+        <http:inbound-endpoint
+            address="http://localhost:8081/test/headers"
+            exchange-pattern="request-response">
+        </http:inbound-endpoint>
+        
+        <response>
+        	<custom-transformer class="se.skltp.patch.mule.transport.http.headers.AddHeadersTransformer"/>
+        </response>
+
+        <http:outbound-endpoint
+            address="http://localhost:8082/test/headers">
+        </http:outbound-endpoint>
+    </flow>
+-->
+
+	<!--
+	<jetty:connector name="jettyConnector">
+		<jetty:webapps directory="src/main/webapp" port="8082"/>
+	</jetty:connector>
+	-->
+
+</mule>
