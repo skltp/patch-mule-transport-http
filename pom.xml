@@ -9,7 +9,7 @@
 
   <groupId>se.skltp.patch.mule.transport.http</groupId>
   <artifactId>patch-parent</artifactId>
-  <version>1.0-RC2-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
 
@@ -22,7 +22,7 @@
     <url>http://github.com/skltp/patch-cxf-rt-bindings-soap</url>
     <connection>scm:git:git://github.com/skltp/patch-cxf-rt-bindings-soap.git</connection>
     <developerConnection>scm:git:git://github.com/skltp/patch-cxf-rt-bindings-soap.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v1.0</tag>
   </scm>
 
   <modules>
